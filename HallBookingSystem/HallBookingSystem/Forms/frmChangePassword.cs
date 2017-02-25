@@ -16,7 +16,6 @@ namespace HallBookingSystem
         public frmChangePassword()
         {
             InitializeComponent();
-            txtUserName.Text = Operation.currUser.UserName;
             try
             { this.Icon = new System.Drawing.Icon(Application.StartupPath + "\\MOBILE.ico"); }
             catch { }
@@ -141,16 +140,6 @@ namespace HallBookingSystem
         {
             InitializeComponent();
             lblUserId.Text = UserId.ToString();
-            txtUserName.Text = UserName;
-            if ((!string.IsNullOrEmpty(txtUserName.Text)))
-            {
-                txtUserName.ReadOnly = true;
-            }
-            else
-            {
-                txtUserName.ReadOnly = false;
-            }
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -160,32 +149,25 @@ namespace HallBookingSystem
                 if (validation())
                 {
                     int result;
-                    result = Operation.ExecuteNonQuery("update [Order.ClientMaster] set password='" + Operation.Encryptdata(txtNew.Text) + "' where UserName='" + txtUserName.Text + "'");
+                    result = Operation.ExecuteNonQuery("update Users set [Password]='" + Operation.Encryptdata(txtNew.Text) + "' where [UserName]='" + Operation.currUser.UserName + "'");
                     if (result == 1)
                     {
                         MessageBox.Show("Password changed successfully.", Operation.MsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtConfirm.Text = "";
                         txtNew.Text = "";
                         txtOld.Text = "";
-                        lblUserId.Text = "0";
+                    
                     }
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Error while changing password, Please try after some time." + Environment.NewLine + ex.Message, Operation.MsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblUserId.Text = "0";
             }
         }
 
         private bool validation()
         {
-            if (txtUserName.Text == "")
-            {
-                MessageBox.Show("Please enter User name.", Operation.MsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                txtUserName.Focus();
-                return false;
-            }
             if (txtOld.Text == "")
             {
                 MessageBox.Show("Please enter old password.", Operation.MsgTitle, MessageBoxButtons.OK, MessageBoxIcon.Stop);

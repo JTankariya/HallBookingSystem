@@ -60,9 +60,30 @@ namespace HallBookingSystem.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _1354171085_print_printer1 {
+            get {
+                object obj = ResourceManager.GetObject("1354171085_print_printer1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _1486416649_settings {
+            get {
+                object obj = ResourceManager.GetObject("1486416649_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap accept {
             get {
                 object obj = ResourceManager.GetObject("accept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap accept1 {
+            get {
+                object obj = ResourceManager.GetObject("accept1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -81,9 +102,23 @@ namespace HallBookingSystem.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap close1 {
             get {
                 object obj = ResourceManager.GetObject("close1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Edit {
+            get {
+                object obj = ResourceManager.GetObject("Edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -119,6 +154,13 @@ namespace HallBookingSystem.Properties {
         internal static System.Drawing.Bitmap search2 {
             get {
                 object obj = ResourceManager.GetObject("search2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap search21 {
+            get {
+                object obj = ResourceManager.GetObject("search21", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

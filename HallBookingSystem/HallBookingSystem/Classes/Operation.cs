@@ -15,6 +15,36 @@ namespace HallBookingSystem
         public static User currUser = null;
         private static string EncryptionKey = "MAKV2SPBNI99212";
         public static string MsgTitle = "Expert Mobile System By Shah Infotech-9979866022";
+        public static string gViewQuery = "";
+        public static string ViewID = "";
+        public static string MultiViewId = "";
+        public static bool isCloseApp = false;
+
+        public static Boolean ExecuteTransaction(List<string> q)
+        {
+            OleDbCommand cmd;
+            if (Conn.State != ConnectionState.Open)
+            { Conn.Open(); }
+            OleDbTransaction Tran = Conn.BeginTransaction();
+            try
+            {
+                foreach (string query in q)
+                {
+                    cmd = new OleDbCommand(query, Conn, Tran);
+                    cmd.ExecuteNonQuery();
+                }
+                Tran.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Tran.Rollback();
+                return false;
+            }
+
+        }
+
         public static int ExecuteNonQuery(string Query)
         {
             OleDbCommand cmd = new OleDbCommand(Query, Conn);
@@ -35,6 +65,12 @@ namespace HallBookingSystem
                 Conn.Close();
             }
             return Result;
+        }
+
+        public static void Bindgrid(string selectcommond, DataGridView supplydatagrid)
+        {
+            DataTable dt = GetDataTable(selectcommond);
+            supplydatagrid.DataSource = dt;
         }
 
         public static DataTable GetDataTable(string Query)

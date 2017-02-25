@@ -44,12 +44,15 @@ namespace HallBookingSystem
                     Operation.currUser = new User(dt.Rows[0]);
                     this.Hide();
                     frmMain objMain = new frmMain();
-                    objMain.Show();
+                    objMain.ShowDialog();
+                    if (Operation.isCloseApp)
+                    {
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password, Exiting system.");
-                    Application.Exit();
+                    MessageBox.Show("Invalid username or password, Please try again.");
                 }
             }
             catch (Exception ez)

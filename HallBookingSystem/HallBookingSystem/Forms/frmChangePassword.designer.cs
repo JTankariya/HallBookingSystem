@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.Label1 = new System.Windows.Forms.Label();
             this.txtConfirm = new System.Windows.Forms.TextBox();
             this.txtNew = new System.Windows.Forms.TextBox();
             this.txtOld = new System.Windows.Forms.TextBox();
@@ -50,32 +48,10 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtUserName
-            // 
-            this.txtUserName.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(164, 18);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtUserName.MaxLength = 100;
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(174, 26);
-            this.txtUserName.TabIndex = 0;
-            this.txtUserName.Tag = "Enter User Name";
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(67, 23);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(91, 18);
-            this.Label1.TabIndex = 28;
-            this.Label1.Text = "User Name";
-            // 
             // txtConfirm
             // 
             this.txtConfirm.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirm.Location = new System.Drawing.Point(164, 126);
+            this.txtConfirm.Location = new System.Drawing.Point(164, 90);
             this.txtConfirm.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtConfirm.MaxLength = 100;
             this.txtConfirm.Name = "txtConfirm";
@@ -87,7 +63,7 @@
             // txtNew
             // 
             this.txtNew.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNew.Location = new System.Drawing.Point(164, 89);
+            this.txtNew.Location = new System.Drawing.Point(164, 53);
             this.txtNew.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNew.MaxLength = 100;
             this.txtNew.Name = "txtNew";
@@ -99,7 +75,7 @@
             // txtOld
             // 
             this.txtOld.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOld.Location = new System.Drawing.Point(164, 53);
+            this.txtOld.Location = new System.Drawing.Point(164, 17);
             this.txtOld.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtOld.MaxLength = 100;
             this.txtOld.Name = "txtOld";
@@ -112,7 +88,7 @@
             // 
             this.Label6.AutoSize = true;
             this.Label6.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label6.Location = new System.Drawing.Point(40, 94);
+            this.Label6.Location = new System.Drawing.Point(40, 58);
             this.Label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(118, 18);
@@ -123,7 +99,7 @@
             // 
             this.Label5.AutoSize = true;
             this.Label5.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(49, 58);
+            this.Label5.Location = new System.Drawing.Point(49, 22);
             this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label5.Name = "Label5";
             this.Label5.Size = new System.Drawing.Size(109, 18);
@@ -134,7 +110,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(14, 128);
+            this.Label4.Location = new System.Drawing.Point(14, 92);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(144, 18);
@@ -156,7 +132,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Image = global::HallBookingSystem.Properties.Resources.close1;
-            this.btnDelete.Location = new System.Drawing.Point(180, 174);
+            this.btnDelete.Location = new System.Drawing.Point(180, 124);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(59, 52);
             this.btnDelete.TabIndex = 6;
@@ -173,9 +149,9 @@
             this.toolStripStatusLabel2,
             this.ControlMessage,
             this.ControlLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 200);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(348, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(362, 22);
             this.statusStrip1.TabIndex = 72;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -188,7 +164,7 @@
             // ControlMessage
             // 
             this.ControlMessage.Name = "ControlMessage";
-            this.ControlMessage.Size = new System.Drawing.Size(274, 17);
+            this.ControlMessage.Size = new System.Drawing.Size(288, 17);
             this.ControlMessage.Spring = true;
             this.ControlMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -207,13 +183,11 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.Label5);
             this.groupBox1.Controls.Add(this.Label6);
-            this.groupBox1.Controls.Add(this.txtUserName);
             this.groupBox1.Controls.Add(this.txtOld);
-            this.groupBox1.Controls.Add(this.Label1);
             this.groupBox1.Controls.Add(this.txtConfirm);
-            this.groupBox1.Location = new System.Drawing.Point(0, 3);
+            this.groupBox1.Location = new System.Drawing.Point(7, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(348, 260);
+            this.groupBox1.Size = new System.Drawing.Size(348, 190);
             this.groupBox1.TabIndex = 73;
             this.groupBox1.TabStop = false;
             // 
@@ -221,7 +195,7 @@
             // 
             this.lblUserId.AutoSize = true;
             this.lblUserId.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserId.Location = new System.Drawing.Point(212, 158);
+            this.lblUserId.Location = new System.Drawing.Point(246, 174);
             this.lblUserId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserId.Name = "lblUserId";
             this.lblUserId.Size = new System.Drawing.Size(111, 13);
@@ -235,7 +209,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::HallBookingSystem.Properties.Resources.accept;
-            this.btnSave.Location = new System.Drawing.Point(109, 174);
+            this.btnSave.Location = new System.Drawing.Point(109, 124);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(57, 52);
             this.btnSave.TabIndex = 5;
@@ -246,12 +220,12 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // frmChagePassword
+            // frmChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(348, 288);
+            this.ClientSize = new System.Drawing.Size(362, 222);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -259,7 +233,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmChagePassword";
+            this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Change Password";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmChagePassword_KeyDown);
@@ -274,8 +248,6 @@
 
         #endregion
 
-        internal System.Windows.Forms.TextBox txtUserName;
-        internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.TextBox txtConfirm;
         internal System.Windows.Forms.TextBox txtNew;
         internal System.Windows.Forms.TextBox txtOld;

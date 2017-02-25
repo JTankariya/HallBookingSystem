@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Tapan\TapanChequePrinting\TapanChequePrinting\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,11 +74,29 @@
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRegisters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRegisters.Designer.cs">
+      <DependentUpon>frmRegisters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearch.designer.cs">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmUserLogin.cs">
       <SubType>Form</SubType>
@@ -100,8 +122,20 @@
       <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRegisters.resx">
+      <DependentUpon>frmRegisters.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearch.resx">
+      <DependentUpon>frmSearch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUserLogin.resx">
@@ -157,6 +191,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search21.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1354171085_print_printer1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InitialDBFs\Settings.DBF" />
+    <None Include="Resources\1486416649_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Receipts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
