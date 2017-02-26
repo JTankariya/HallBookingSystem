@@ -71,10 +71,10 @@ namespace HallBookingSystem
 
         private void frmUserLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                btnOk_Click(sender, e);
-            }
+            //if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            //{
+            //    btnOk_Click(sender, e);
+            //}
 
         }
 
@@ -82,6 +82,12 @@ namespace HallBookingSystem
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
+
+            if (e.KeyCode == (Keys.Enter))
+            {
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
+            }
         }
     }
 }

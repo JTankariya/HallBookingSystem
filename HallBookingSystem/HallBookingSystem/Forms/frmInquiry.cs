@@ -17,6 +17,16 @@ namespace HallBookingSystem
             btnAdd_Click(null, null);
         }
 
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    if (keyData == (Keys.Enter))
+        //    {
+        //        SendKeys.Send("{TAB}");
+        //    }
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateInquiry())
@@ -25,11 +35,11 @@ namespace HallBookingSystem
                 if (lblId.Text == "0")
                 {
                     result = Operation.ExecuteNonQuery("Insert into Inquiry([Number],[Party],[Date],[Address],[MobNo],[Plot],[BkDate]," +
-                        "[FuncType],[TimeType],[TotPerson]) values('" + lblInquiryNo.Text + "','" + txtParty.Text + "','" +
+                        "[FuncType],[TimeType],[TotPerson],[Area]) values('" + lblInquiryNo.Text + "','" + txtParty.Text + "','" +
                         dteInquiryDate.Value.ToString("dd/MM/yyyy") + "','" +
                         txtAddress.Text + "','" + txtMobile.Text + "','" + cmbPlot.Text + "','" +
                         dteBookingDate.Value.ToString("dd/MM/yyyy") + "','" + cmbFunctionType.Text + "','" +
-                        cmbTimingSlot.Text + "','" + txtGathering.Text + "')");
+                        cmbTimingSlot.Text + "','" + txtGathering.Text + "','" + cmbArea.Text + "')");
                 }
                 else
                 {
@@ -38,7 +48,7 @@ namespace HallBookingSystem
                         txtAddress.Text + "',[MobNo]='" + txtMobile.Text + "',[Plot]='" + cmbPlot.Text +
                         "',[BkDate]='" + dteBookingDate.Value.ToString("dd/MM/yyyy") + "',[FuncType]='" +
                         cmbFunctionType.Text + "',[TimeType]='" + cmbTimingSlot.Text +
-                        "',[TotPerson]='" + txtGathering.Text + "' where [Number]='" + lblInquiryNo.Text + "'");
+                        "',[TotPerson]='" + txtGathering.Text + "',[Area]='" + cmbArea.Text + "' where [Number]='" + lblInquiryNo.Text + "'");
                 }
                 if (result > 0)
                 {
@@ -54,6 +64,24 @@ namespace HallBookingSystem
 
         private bool ValidateInquiry()
         {
+            if (txtParty.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Please enter party name.");
+                txtParty.Focus();
+                return false;
+            }
+            if (cmbFunctionType.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Please select function type.");
+                cmbFunctionType.Focus();
+                return false;
+            }
+            if (cmbPlot.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Please select Plot.");
+                cmbPlot.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -94,7 +122,14 @@ namespace HallBookingSystem
             var inqNumber = 0;
             if (dt != null && dt.Rows.Count > 0)
             {
-                inqNumber = Convert.ToInt32(dt.Rows[0][0]) + 1;
+                try
+                {
+                    inqNumber = Convert.ToInt32(dt.Rows[0][0]) + 1;
+                }
+                catch
+                {
+                    inqNumber = 1;
+                }
             }
             else
             {
@@ -110,6 +145,10 @@ namespace HallBookingSystem
             cmbPlot.DisplayMember = "Plot";
             if (cmbPlot.Items.Count > 0)
                 cmbPlot.SelectedIndex = 0;
+            cmbArea.DataSource = Operation.GetDataTable("select distinct Area from Inquiry");
+            cmbArea.DisplayMember = "Area";
+            if (cmbArea.Items.Count > 0)
+                cmbArea.SelectedIndex = 0;
             cmbFunctionType.DataSource = Operation.GetDataTable("select distinct FuncType from Inquiry");
             cmbFunctionType.DisplayMember = "FuncType";
             if (cmbFunctionType.Items.Count > 0)
@@ -181,6 +220,11 @@ namespace HallBookingSystem
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+            if (e.KeyCode == (Keys.Enter))
+            {
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
             }
         }
     }

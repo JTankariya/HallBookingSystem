@@ -27,12 +27,22 @@ namespace HallBookingSystem
             dteToDate.Value = Convert.ToDateTime(DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year);
             if (_type == "Booking")
             {
+                cmbSortOn.Items[0] = "Booking Date";
                 this.Text = "Booking Register";
             }
             else
             {
+                cmbSortOn.Items[0] = "Inquiry Date";
                 this.Text = "Inquiry Register";
             }
+            cmbSortOn.SelectedIndex = 0;
+            var dtArea = Operation.GetDataTable("select distinct Area from Inquiry");
+            dtArea.Rows.Add();
+            dtArea.Rows[dtArea.Rows.Count - 1][0] = "-- All--";
+            cmbArea.DataSource = dtArea;
+            cmbArea.DisplayMember = "Area";
+            if (cmbArea.Items.Count > 0)
+                cmbArea.SelectedIndex = cmbArea.Items.Count - 1;
             RenderReport();
         }
 
@@ -43,15 +53,20 @@ namespace HallBookingSystem
                 if (_type == "Booking")
                 {
                     var dtFilter = Operation.GetDataTable("select Booking.[Number] as [Booking No],Booking.[Date] as [Booking Date]," +
-                           "Booking.[Party],Inquiry.[MobNo] as [Mobile],Inquiry.[BkDate] as [Function Date],Inquiry.[FuncType] as [Function Type],[Plot],Inquiry.[TotPerson] as [Pax],[Deposite] from Booking" +
-                           " left join Inquiry on Inquiry.[Number]=Booking.[InqNo] where Booking.[Date] between #" +
-                           dteFromDate.Value.ToString("dd/MM/yyyy") + "# and #" + dteToDate.Value.ToString("dd/MM/yyyy") + "#");
+                           "Booking.[Party],Inquiry.[MobNo] as [Mobile],Inquiry.[BkDate] as [Function Date],Inquiry.[FuncType] as [Function Type]"+
+                           ",Inquiry.[Plot],Inquiry.[TotPerson] as [Pax],Booking.[Deposite],Inquiry.[Area],Inquiry.[Address] from Booking" +
+                           " left join Inquiry on Inquiry.[Number]=Booking.[InqNo] where " + 
+                           (cmbArea.SelectedIndex != cmbArea.Items.Count - 1 ? "Inquiry.[Area]='" + cmbArea.Text + "' and " : "") + 
+                           " Inquiry.[BkDate] between #" + dteFromDate.Value.ToString("dd/MM/yyyy") + "# and #" + dteToDate.Value.ToString("dd/MM/yyyy") + "# order by " + (cmbSortOn.SelectedIndex == 0 ? "Booking.[Date]" : "Inquiry.[BkDate]"));
                     dgvReport.DataSource = dtFilter;
                 }
                 else
                 {
-                    var dtFilter = Operation.GetDataTable("select Number as [Inquiry No],Date as [Inquiry Date],Party,MobNo as [Mobile],BkDate as [Function Date],FuncType as [Function Type] from Inquiry where Inquiry.[Date] between #" +
-                       dteFromDate.Value.ToString("dd/MM/yyyy") + "# and #" + dteToDate.Value.ToString("dd/MM/yyyy") + "#");
+                    var dtFilter = Operation.GetDataTable("select Number as [Inquiry No],Date as [Inquiry Date],Party,MobNo as [Mobile],"+
+                        "BkDate as [Function Date],FuncType as [Function Type],Inquiry.[Area],Inquiry.[Address] from Inquiry where " + 
+                        (cmbArea.SelectedIndex != cmbArea.Items.Count - 1 ? "Inquiry.[Area]='" + cmbArea.Text + "' and " : "") + " Inquiry.[Date] between #" +
+                       dteFromDate.Value.ToString("dd/MM/yyyy") + "# and #" + dteToDate.Value.ToString("dd/MM/yyyy") + "# order by " + 
+                       (cmbSortOn.SelectedIndex == 0 ? "Inquiry.[Date]" : "Inquiry.[BkDate]"));
                     dgvReport.DataSource = dtFilter;
                 }
             }
@@ -177,6 +192,16 @@ namespace HallBookingSystem
             {
                 this.Close();
             }
+        }
+
+        private void cmbArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RenderReport();
+        }
+
+        private void cmbSortOn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RenderReport();
         }
     }
 }

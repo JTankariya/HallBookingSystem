@@ -64,6 +64,7 @@ namespace HallBookingSystem
             if (cmbPaymentBy.SelectedIndex == 1 || cmbPaymentBy.SelectedIndex == 0)
             {
                 txtChequeBank.Enabled = txtChequeNo.Enabled = dtpChequeDate.Enabled = false;
+                txtChequeBank.Text = txtChequeNo.Text = "";
             }
             else
             {
@@ -220,7 +221,7 @@ namespace HallBookingSystem
                 cell = new PdfPCell(table);
                 cell.Border = iTextSharp.text.Rectangle.BOX;
                 outerTable.AddCell(cell);
-                
+
                 table = new PdfPTable(2);
                 table.HorizontalAlignment = iTextSharp.text.Rectangle.ALIGN_CENTER;
                 table.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
@@ -256,7 +257,7 @@ namespace HallBookingSystem
                 cell.PaddingBottom = 8;
                 cell.Colspan = 2;
                 table.AddCell(cell);
-                
+
                 if (Convert.ToString(dtBooking.Rows[0]["PmtMode"]).ToUpper() == "CASH")
                 {
                     cell = new PdfPCell(new Phrase("By Cash", font10_bold));
@@ -271,7 +272,7 @@ namespace HallBookingSystem
                     table.AddCell(new Phrase("Cheque / Draft Date :" + Convert.ToDateTime(Convert.ToString(dtBooking.Rows[0]["ChequeDt"])).ToString("dd/MM/yyyy"), font10_bold));
                     table.AddCell(new Phrase("Drawn on Bank : " + Convert.ToString(dtBooking.Rows[0]["ChequeBank"]), font10_bold));
                 }
-                
+
                 cell = new PdfPCell(new Phrase("In Part / Full Payment for following details, ", font10));
                 cell.Colspan = 2;
                 cell.PaddingBottom = 8;
@@ -373,6 +374,24 @@ namespace HallBookingSystem
 
         private bool validateBooking()
         {
+            if (cmbInquiryDetail.SelectedValue != null && Convert.ToInt32(cmbInquiryDetail.SelectedValue) <= 0)
+            {
+                MessageBox.Show("Please select inquiry.");
+                cmbInquiryDetail.Focus();
+                return false;
+            }
+            if (cmbPaymentBy.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select Payment option.");
+                cmbPaymentBy.Focus();
+                return false;
+            }
+            if (txtAdvanceAmount.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Please enter amount.");
+                txtAdvanceAmount.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -411,6 +430,11 @@ namespace HallBookingSystem
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+            if (e.KeyCode == (Keys.Enter))
+            {
+                SendKeys.Send("{TAB}");
+                e.Handled = true;
             }
         }
 
